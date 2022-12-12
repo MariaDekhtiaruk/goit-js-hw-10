@@ -1,3 +1,5 @@
+import Notiflix, { Notify } from 'notiflix';
+
 export const fetchCountries = name => {
   const urlAPI = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages
 `;
@@ -14,6 +16,6 @@ export const fetchCountries = name => {
       return data.json();
     })
     .catch(error => {
-      console.log(`Put correct country`);
+      Notify.failure('Oops, there is no country with that name');
     });
 };
