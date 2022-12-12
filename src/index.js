@@ -8,7 +8,7 @@ const wrapper = document.querySelector(`.country-info`);
 
 searchRef.addEventListener('input', e => {
   const countryName = e.target.value;
-  if (countryName.length > 2) {
+  if (countryName.length > 0) {
     fetchCountries(countryName).then(data => {
       console.log(data);
       wrapper.innerHTML = createCountryElements(data);
@@ -33,6 +33,9 @@ function createCountryElements(countryArray = []) {
       })
       .join('');
   } else if (countryArray.length === 0) {
+    return '';
+  } else if (countryArray.length > 10) {
+    alert('Too many matches found. Please enter a more specific name.');
     return '';
   } else {
     return countryArray

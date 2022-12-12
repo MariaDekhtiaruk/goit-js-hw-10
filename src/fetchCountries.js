@@ -1,5 +1,6 @@
 export const fetchCountries = name => {
-  const urlAPI = `https://restcountries.com/v3.1/name/${name}`;
+  const urlAPI = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages
+`;
 
   return fetch(urlAPI)
     .then(data => {
