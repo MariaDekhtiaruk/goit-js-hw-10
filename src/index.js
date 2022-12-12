@@ -26,15 +26,16 @@ function createCountryElements(countryArray = []) {
     return countryArray
       .map(({ name, capital, population, flags, languages }) => {
         return `<div class="country">
-        
+        <div class="country-flag">
         <img class="flag-img" src="${flags.svg}" alt="${
           name.official
-        }" width="16" height="16" loading="lazy">
-    <h2>${name.official}</h2>
-    <h2> Capital: ${capital[0]}</h2>
-    <h2> Population:${population}</h2>
+        } "width="20" height="20" loading="lazy">
+        <h2 class="name">${name.official}</h2>
+        </div>
+    <h2 class="value"> Capital: ${capital[0]}</h2>
+    <h2 class="value"> Population: ${population}</h2>
     
-   <h2> Languages: ${Object.values(languages).join(', ')}</h2>
+   <h2 class="value"> Languages: ${Object.values(languages).join(', ')}</h2>
   </div>`;
       })
       .join('');
@@ -47,8 +48,11 @@ function createCountryElements(countryArray = []) {
     return '';
   } else {
     return countryArray
-      .map(({ name }) => {
-        return `<h2>${name.official}</h2>`;
+      .map(({ name, flags }) => {
+        return `<div class="country-flag">
+        <img class="flag-img" src="${flags.svg}" alt="${name.official} "width="20" height="20" loading="lazy">
+        <h2 class="value">${name.official}</h2>
+        </div>`;
       })
       .join('');
   }
